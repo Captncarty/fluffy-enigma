@@ -1,1 +1,47 @@
 Install github on Ubuntu
+
+
+$ cd Desktop
+captncarty@captncarty-VirtualBox:~/Desktop$ cd fluffy-enigma
+captncarty@captncarty-VirtualBox:~/Desktop/fluffy-enigma$ touch hello.txt
+captncarty@captncarty-VirtualBox:~/Desktop/fluffy-enigma$ cd hello.txt
+bash: cd: hello.txt: Not a directory
+captncarty@captncarty-VirtualBox:~/Desktop/fluffy-enigma$
+
+$ git init
+hint: Using 'master' as the name for the initial branch. This default branch name
+hint: is subject to change. To configure the initial branch name to use in all
+hint: of your new repositories, which will suppress this warning, call:
+hint: 
+hint: 	git config --global init.defaultBranch <name>
+hint: 
+hint: Names commonly chosen instead of 'master' are 'main', 'trunk' and
+hint: 'development'. The just-created branch can be renamed via this command:
+hint: 
+hint: 	git branch -m <name>
+Initialized empty Git repository in /home/captncarty/Desktop/fluffy-enigma/.git/
+captncarty@captncarty-VirtualBox:~/Desktop/fluffy-enigma$ git status
+On branch master
+
+No commits yet
+
+Untracked files:
+  (use "git add <file>..." to include in what will be committed)
+	hello.txt
+
+nothing added to commit but untracked files present (use "git add" to track)
+captncarty@captncarty-VirtualBox:~/Desktop/fluffy-enigma$ git add.
+git: 'add.' is not a git command. See 'git --help'.
+
+The most similar command is
+	add
+captncarty@captncarty-VirtualBox:~/Desktop/fluffy-enigma$ git add .
+captncarty@captncarty-VirtualBox:~/Desktop/fluffy-enigma$ git status
+On branch master
+
+No commits yet
+
+Changes to be committed:
+  (use "git rm --cached <file>..." to unstage)
+	new file:   hello.txt
+
