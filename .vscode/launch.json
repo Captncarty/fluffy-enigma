@@ -10,7 +10,8 @@
       "externalConsole": false,
       "cwd": "/Users/kelvinmccarty/Documents/GitHub/fluffy-enigma",
       "program": "/Users/kelvinmccarty/Documents/GitHub/fluffy-enigma/build/Debug/outDebug",
-      "MIMode": "gdb"
+      "MIMode": "gdb",
+      "miDebuggerPath": "gdb"
     }
   ]
 }
