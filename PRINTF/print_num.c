@@ -42,28 +42,26 @@ int print_number(va_list args)
  * @b: unsigned in to print
  * Return: number of printed digits
  */
-int print_unsigned_number(va_list n)
+int print_unsgined_number(unsigned int n)
 {
-	unsigned int a, b = 2147483648, j = 1, sum = 0;
-	unsigned int x[32];
-	int counter = 0;
+	int div;
+	int len;
+	unsigned int num;
 
-	a = va_arg(n, unsigned int);
-	x[0] = a / b;
+	div = 1;
+	len = 0;
 
-	for (; j < 32; j++)
+	num = n;
+
+	for (; num / div > 9; )
+		div *= 10;
+
+	for (; div != 0; )
 	{
-		b /= 2;
-		x[j] = (a / b) % 2;
+		len += _putchar('0' + num / div);
+		num %= div;
+		div /= 10;
 	}
-	for (j = 0; j < 32; j++)
-	{
-		sum += x[j];
-		if (sum || j == 31)
-		{
-			_putchar('0' + x[j]);
-			counter++;
-		}
-	}
-	return (counter);
+
+	return (len);
 }
