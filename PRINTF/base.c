@@ -1,24 +1,6 @@
 #include "main.h"
 
-
-/**
- * hex_check - Checks which hex function is calling it
- * @num: Number to convert into letter
- * @x: Tells which hex function is calling it
- * Return: Ascii value for a letter
- */
-int hex_check(int num, char x)
-{
-	char *hex = "abcdef";
-	char *Hex = "ABCDEF";
-
-	num = num - 10;
-	if (x == 'x')
-		return (hex[num]);
-	else
-		return (Hex[num]);
-	return (0);
-}
+int hex_check(int num, char x);
 
 /**
  * print_binary - Converts a number from base 10 to binary
@@ -150,7 +132,7 @@ int print_hex(va_list list)
  * print_heX - Prints a representation of a decimal number on base16 Uppercase
  * @list: List of the arguments passed to the function
  * Return: Number of characters printed
- */
+ 
 int print_heX(va_list list)
 {
 	unsigned int num;
@@ -189,4 +171,35 @@ int print_heX(va_list list)
 	free(hex_rep);
 	free(rev_hex);
 	return (len);
+} */
+
+/**
+ * hex_check - Checks which hex function is calling it
+ * @num: Number to convert into letter
+ * @x: Tells which hex function is calling it
+ * Return: Ascii value for a letter
+ */
+int hex_check(int num, char x)
+{
+	char *hex = "abcdef";
+	char *Hex = "ABCDEF";
+
+	num = num - 10;
+	if (x == 'x')
+		return (hex[num]);
+	else
+		return (Hex[num]);
+	return (0);
 }
+
+/**
+ * print_heX - Prints a representation of a decimal number on base16 Uppercase
+ * @list: List of the arguments passed to the function
+ * Return: Number of characters printed
+ */
+int print_heX(va_list list)
+{
+	unsigned_int a[8];
+	unsigned int j = 1, m = 268435456, n, sum = 0;
+	char diff;
+	int counter
