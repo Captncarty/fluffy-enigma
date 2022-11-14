@@ -65,3 +65,89 @@ int print_unsgined_number(unsigned int n)
 
 	return (len);
 }
+
+/**
+ * print_p - prints an address
+ * @p: address to print
+ *
+ * Return: number of characters to print
+ */
+int print_address(va_list p)
+{
+	int count = 0;
+	unsigned int a[16];
+	unsigned int i, sum;
+	unsigned long n, m;
+	char *str = "(nil)";
+
+	n = va_arg(p, unsigned long);
+	if (n == 0)
+	{
+		for (i = 0; str[i]; i++)
+		{
+			_putchar(str[i]);
+			count++;
+		}
+		return (count);
+	}
+	_putchar('0');
+	_putchar('x');
+	count = 2;
+	m = pow(16, 15); /* 16 ^ 15 */
+	a[0] = n / m;
+	for (i = 1; i < 16; i++)
+	{
+		m /= 16;
+		a[i] = (n / m) % 16;
+	}
+	for (i = 0, sum = 0; i < 16; i++)
+	{
+		sum += a[i];
+		if (sum || i == 15)
+		{
+			if (a[i] < 10)
+				_putchar('0' + a[i]);
+			else
+				_putchar('0' + ('a' - ':') + a[i]);
+			count++;
+		}
+	}
+	return (count);
+}
+
+/**
+ * convert - converter function, a clone of itoa
+ * @num: number
+ * @base: base
+ * @flags: argument flags
+ * @params: paramater struct
+ *
+ * Return: string
+ */
+char *convert(long int num, int base, int flags, params_t *params)
+{
+	static char *array;
+	static char buffer[50];
+	char sign = 0;
+	char *ptr;
+	unsigned long n = num;
+	(void)params;
+
+	if (!(flags & CONVERT_UNSIGNED) && num < 0)
+	{
+		n = -num;
+		sign = '-';
+	}
+	array = flags & CONVERT_LOWERCASE ? "0123456789abcdef" : "0123456789ABCDEF";
+	ptr = &buffer[49];
+	*ptr = '\0';
+
+	do	{
+		*--ptr = array[n % base];
+		n /= base;
+	} while (n != 0);
+
+	if (sign)
+		*--ptr = sign;
+	return (ptr);
+}

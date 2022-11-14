@@ -6,7 +6,7 @@ int hex_check(int num, char x);
  * print_binary - Converts a number from base 10 to binary
  * @list: List of arguments passed to this function
  * Return: The length of the number printed
- */
+ 
 int print_binary(va_list list)
 {
 	unsigned int num;
@@ -40,7 +40,7 @@ int print_binary(va_list list)
 	free(str);
 	free(rev_str);
 	return (len);
-}
+} */
 
 /**
  * print_octal - Prints the numeric representation of a number in octal base
@@ -199,7 +199,61 @@ int hex_check(int num, char x)
  */
 int print_heX(va_list list)
 {
-	unsigned_int a[8];
+	unsigned int a[8];
 	unsigned int j = 1, m = 268435456, n, sum = 0;
 	char diff;
-	int counter
+	int counter = 0;
+
+	n = va_arg(list, unsigned int);
+	diff = 'A' - ':';
+	a[0] = n / m;
+	for (; j < 8; j++)
+	{
+		m /= 16;
+		a[j] = (n / m) % 16;
+	}
+	for (j = 0; j < 8; j++)
+    {
+		sum += a[j];
+		if (sum || j == 7)
+		{
+			if (a[j] < 10)
+				_putchar('0' + a[j]);
+			else
+				_putchar('0' + diff + a[j]);
+			counter++;
+		}
+	}
+	return (counter);
+}
+
+/**
+ * print_b - A function that prints an unsigned int i binary notation
+ * @b: unsigned in to print
+ * Return: number of printed digits
+ */
+int print_binary(va_list list)
+{
+	unsigned int n, m = 2147483648, j = 1, sum = 0;
+	unsigned int a[32];
+	int counter = 0;
+
+	n = va_arg(list, unsigned int);
+	a[0] = n / m;
+
+	for (; j < 32; j++)
+	{
+		m /= 2;
+		a[j] = (n / m) % 2;
+	}
+	for (j = 0; j < 32; j++)
+	{
+		sum += a[j];
+		if (sum || j == 31)
+		{
+			_putchar('0' + a[j]);
+			counter++;
+		}
+	}
+	return (counter);
+}
